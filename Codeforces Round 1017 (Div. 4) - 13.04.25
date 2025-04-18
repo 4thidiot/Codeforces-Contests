@@ -323,4 +323,66 @@ int main()
 	}
     return 0;
 }
+//q-4
+#include <bits/stdc++.h>
+using namespace std;
 
+void solve()
+{
+    string s, t;
+    cin>>s>>t;
+    vector <int> v1, v2;
+    
+    if(s[0]!=t[0])
+    {
+        cout<<"NO"<<endl;
+        return;
+    }
+    
+    s = '.' + s; //starting mein ek . daal diya
+    t = '.' + t; //starting mein ek . daal diya
+    
+    for(int i=1; i<s.size(); i++)
+    {
+        if(s[i]==s[i-1])
+            v1.back()++;
+        else
+            v1.push_back(1);
+    }
+    
+    for(int i=1; i<t.size(); i++)   
+    {
+        if(t[i]==t[i-1])
+            v2.back()++;
+        else
+            v2.push_back(1);
+    }
+    
+    if(v1.size() != v2.size())
+    {
+        cout<<"NO"<<endl;
+        return;
+    }
+    
+    for(int i=0; i<v1.size(); i++)
+    {
+        if(v2[i]<v1[i] || v2[i]>2*v1[i])
+        {
+            cout<<"NO"<<endl;
+            return;
+        }
+    }
+    cout<<"YES"<<endl;    
+}
+
+
+
+int main() 
+{
+	int t;
+	cin>>t;
+	while(t--)
+	    solve();
+    
+    return 0;
+}
